@@ -1,13 +1,19 @@
 import Link from "next/link"
+import { Post } from "@/types/post" 
 
-function Postlist(posts) {
+
+interface PostsListProps {
+    posts: Post[]
+}
+
+function Postlist({posts}:PostsListProps) {
 
   return (
     <div className="post-list">
       {
         posts.map((post)=>(
           <div className="post-item" key={post.id}>
-            <h2><Link href="/">{post.title}</Link></h2>
+            <h2><Link href={`posts/${post.id}`}>{post.title}</Link></h2>
           </div>
         ))
       }
